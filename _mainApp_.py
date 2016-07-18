@@ -12,7 +12,11 @@ application = web.application(urls,globals())
 web.config.debug = False
 
 pwdForSqlEngine = os.getenv('custom_cis_sql_pwd')
-connection_tunnel = 'DRIVER={SQL Server};SERVER=localhost;DATABASE=capiq_full;UID=sa;PWD='+pwdForSqlEngine
+driverForSqlEngine = os.getenv('custom_cis_sql_driver')
+serverForSqlEngine = os.getenv('custom_cis_sql_server')
+dbForSqlEngine = os.getenv('custom_cis_sql_db')
+userForSqlEngine = os.getenv('custom_cis_sql_user')
+connection_tunnel = 'DRIVER={'+driverForSqlEngine+'};SERVER='+serverForSqlEngine+';DATABASE='+dbForSqlEngine+';UID='+userForSqlEngine+';PWD='+pwdForSqlEngine
 global cnxn_thread
 
 class tunnel_Factory:
